@@ -1,10 +1,17 @@
 public class EmployeeWage{
-	public static void main(String[] args)
-	{
-	System.out.println("Welcome to employee wage computation!");
 	int wagePerHour = 20;
 	int fullDayHour = 8;
 	int partTimeHour = 8;
+private int computeDailyEmployeeWage()
+	{
+		return wagePerHour*fullDayHour;
+	}
+private int computePartTimeEmployeeWage()
+	{
+		return partTimeHour*wagePerHour;
+	}
+public void computeWagesForMonth()
+	{
 	int wagesForMonth = 0;
 	int workingDaysPerMonth = 20;
 	int workingHours = 0;
@@ -16,7 +23,7 @@ public class EmployeeWage{
 		switch(attendance){
 			case 1:
 					System.out.println("Employee Present");
-					dailyWage=(wagePerHour*fullDayHour);
+					dailyWage=computeDailyEmployeeWage();
 					wagesForMonth=wagesForMonth + dailyWage;
 					workingHours+=fullDayHour;
 					if(workingHours>100)
@@ -28,10 +35,10 @@ public class EmployeeWage{
 					if(partTime==1)
 						{
 						System.out.println("Employee Performed Parttime");
-						int partTimeWage = (partTimeHour*wagePerHour);
+						int partTimeWage = computePartTimeEmployeeWage();
 						workingHours+=fullDayHour;
-						dailyWage=dailyWage+partTimeWage;
 						wagesForMonth= wagesForMonth + partTimeWage;
+						dailyWage=partTimeWage+dailyWage;
 						System.out.println("New Daily Wage: "+dailyWage);
 						}
 					workingDays+=1;
@@ -48,5 +55,11 @@ public class EmployeeWage{
 	System.out.println("Working Hours: "+workingHours);
 	System.out.println("Wordingdays: "+workingDays);
 	System.out.println("Wages for the Month: "+wagesForMonth);
+	}
+public static void main(String[] args)
+	{
+	System.out.println("Welcome to employee wage computation!");
+	EmployeeWage wageGenerator = new EmployeeWage();
+	wageGenerator.computeWagesForMonth();
 	}
 }
