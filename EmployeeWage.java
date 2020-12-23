@@ -2,7 +2,6 @@ public class EmployeeWage{
 	public static void main(String[] args)
 	{
 	System.out.println("Welcome to employee wage computation!");
-	int attendance = (int)Math.floor((Math.random()*10)%2);
 	int wagePerHour = 20;
 	int fullDayHour = 8;
 	int partTimeHour = 8;
@@ -11,6 +10,7 @@ public class EmployeeWage{
 	for(int i=0;i<20;i++)
 		{
 		int dailyWage = 0;
+		int attendance = (int)Math.floor((Math.random()*10)%2);
 		switch(attendance){
 			case 1:
 					System.out.println("Employee Present");
