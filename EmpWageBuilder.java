@@ -35,11 +35,11 @@ public class EmpWageBuilder implements EmpWageBuilderInterface{
 	public EmpWageBuilder(int companyWagePerHour,int companyMaxWorkingDays,int companyMaxWorkingHours) {
 		wagePerHour = companyWagePerHour;
 		maxWorkingDays = companyMaxWorkingDays;
-		maxWorkingHours = companyMaxWorkingHours;	
+		maxWorkingHours = companyMaxWorkingHours;
 	}
 	public EmpWageBuilder()
 	{
-		
+
 	}
 	public int computeDailyEmployeeWage(int wagePerHour)
 	   {
@@ -91,8 +91,17 @@ public class EmpWageBuilder implements EmpWageBuilderInterface{
 			CompanyEmpWage companyEmpWage = (CompanyEmpWage) iterator.next();
 			System.out.println("Monthly Wage for "+companyEmpWage.companyName+" is "+companyEmpWage.companyMonthlyWage);
 			System.out.println("Daily Wage for "+companyEmpWage.companyName+" is "+companyEmpWage.companyDailyWage);
-		}
+			}
 	   }
+	public void getMonthlyWageForCompany(String companyName)
+	{
+		for (Iterator iterator = cmpArr.iterator(); iterator.hasNext();) {
+			CompanyEmpWage companyEmpWage = (CompanyEmpWage) iterator.next();
+			if(companyEmpWage.companyName==companyName){
+				System.out.println("Monthly Wage for queried company "+companyEmpWage.companyName+" is "+companyEmpWage.companyMonthlyWage);
+			}
+			}
+	}
 	public static void main(String[] args)
 	   {
 	   System.out.println("Welcome to employee wage computation!");
@@ -104,7 +113,7 @@ public class EmpWageBuilder implements EmpWageBuilderInterface{
 	   wageBuilder.cmpArr.add(obj2);
 	   CompanyEmpWage obj3 = new CompanyEmpWage("Microsoft", 100, 30, 100);
 	   wageBuilder.cmpArr.add(obj3);
-	   wageBuilder.printWagesForCompanies();
+	   wageBuilder.getMonthlyWageForCompany("TCS");
 	   }
 	}
 
