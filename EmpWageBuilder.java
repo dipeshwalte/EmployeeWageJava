@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
 interface EmpWageBuilderInterface{
 	int fullDayHour = 8;
 	int partTimeHour = 8;
@@ -6,38 +9,20 @@ interface EmpWageBuilderInterface{
 }
 
 
-class CompanyEmpWage{
-String companyName;
-int wagePerHour;
-int maxWorkingDays;
-int maxWorkingHours;
-int companyMonthlyWage;
-public CompanyEmpWage(String companyCompanyName,int companyWagePerHour,int companyMaxWorkingDays,int companyMaxWorkingHours){
-	companyName = companyCompanyName;
-	wagePerHour = companyWagePerHour;
-	maxWorkingDays = companyMaxWorkingDays;
-	maxWorkingHours = companyMaxWorkingHours;
-	EmpWageBuilder emp = new EmpWageBuilder(companyWagePerHour, companyMaxWorkingDays, companyMaxWorkingHours);
-	companyMonthlyWage = emp.computeWagesForMonth();
-   }
-}
-
 public class EmpWageBuilder implements EmpWageBuilderInterface{
-	   int fullDayHour = 8;
-	   int partTimeHour = 8;
 	   int wagePerHour;
 	   int maxWorkingDays;
 	   int maxWorkingHours;
 	   int wagesForMonth;
-	   CompanyEmpWage cmpArr[];
+	   ArrayList<CompanyEmpWage> cmpArr;
 	public EmpWageBuilder(int companyWagePerHour,int companyMaxWorkingDays,int companyMaxWorkingHours) {
 		wagePerHour = companyWagePerHour;
 		maxWorkingDays = companyMaxWorkingDays;
-		maxWorkingHours = companyMaxWorkingHours;
+		maxWorkingHours = companyMaxWorkingHours;	
 	}
 	public EmpWageBuilder()
 	{
-
+		
 	}
 	private int computeDailyEmployeeWage(int wagePerHour)
 	   {
@@ -85,18 +70,23 @@ public class EmpWageBuilder implements EmpWageBuilderInterface{
 	   }
 	public void printWagesForCompanies()
 	   {
-		for (int i = 0; i < cmpArr.length; i++) {
-			System.out.println("Monthly Wage for "+cmpArr[i].companyName+" is "+cmpArr[i].companyMonthlyWage);
-			}
+		for (Iterator iterator = cmpArr.iterator(); iterator.hasNext();) {
+			CompanyEmpWage companyEmpWage = (CompanyEmpWage) iterator.next();
+			System.out.println("Monthly Wage for "+companyEmpWage.companyName+" is "+companyEmpWage.companyMonthlyWage);
+		}
 	   }
 	public static void main(String[] args)
 	   {
 	   System.out.println("Welcome to employee wage computation!");
 	   EmpWageBuilder wageBuilder = new EmpWageBuilder();
-	   wageBuilder.cmpArr = new CompanyEmpWage[3];
-	   wageBuilder.cmpArr[0] = new CompanyEmpWage("BridgeLabz", 30, 30, 100);
-	   wageBuilder.cmpArr[1] = new CompanyEmpWage("TCS", 50, 30, 100);
-	   wageBuilder.cmpArr[2] = new CompanyEmpWage("Microsoft", 100, 30, 100);
+	   wageBuilder.cmpArr = new ArrayList<CompanyEmpWage>();
+	   CompanyEmpWage obj1 = new CompanyEmpWage("BridgeLabz", 30, 30, 100);
+	   wageBuilder.cmpArr.add(obj1);
+	   CompanyEmpWage obj2 = new CompanyEmpWage("TCS", 50, 30, 100);
+	   wageBuilder.cmpArr.add(obj2);
+	   CompanyEmpWage obj3 = new CompanyEmpWage("Microsoft", 100, 30, 100);
+	   wageBuilder.cmpArr.add(obj3);
 	   wageBuilder.printWagesForCompanies();
 	   }
 	}
+
