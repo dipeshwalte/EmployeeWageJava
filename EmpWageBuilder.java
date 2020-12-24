@@ -1,3 +1,11 @@
+interface EmpWageBuilderInterface{
+	int fullDayHour = 8;
+	int partTimeHour = 8;
+	int computeWagesForMonth();
+	void printWagesForCompanies();
+}
+
+
 class CompanyEmpWage{
 String companyName;
 int wagePerHour;
@@ -14,7 +22,7 @@ public CompanyEmpWage(String companyCompanyName,int companyWagePerHour,int compa
    }
 }
 
-public class EmpWageBuilder{
+public class EmpWageBuilder implements EmpWageBuilderInterface{
 	   int fullDayHour = 8;
 	   int partTimeHour = 8;
 	   int wagePerHour;
