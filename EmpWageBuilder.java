@@ -8,6 +8,21 @@ interface EmpWageBuilderInterface{
 	void printWagesForCompanies();
 }
 
+class CompanyEmpWage{
+String companyName;
+int wagePerHour;
+int maxWorkingDays;
+int maxWorkingHours;
+int companyMonthlyWage;
+public CompanyEmpWage(String companyCompanyName,int companyWagePerHour,int companyMaxWorkingDays,int companyMaxWorkingHours){
+	companyName = companyCompanyName;
+	wagePerHour = companyWagePerHour;
+	maxWorkingDays = companyMaxWorkingDays;
+	maxWorkingHours = companyMaxWorkingHours;
+	EmpWageBuilder emp = new EmpWageBuilder(companyWagePerHour, companyMaxWorkingDays, companyMaxWorkingHours);
+	companyMonthlyWage = emp.computeWagesForMonth();
+   }
+}
 
 public class EmpWageBuilder implements EmpWageBuilderInterface{
 	   int wagePerHour;
