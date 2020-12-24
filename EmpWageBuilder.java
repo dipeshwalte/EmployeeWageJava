@@ -8,6 +8,23 @@ interface EmpWageBuilderInterface{
 	void printWagesForCompanies();
 }
 
+class CompanyEmpWage{
+String companyName;
+int wagePerHour;
+int maxWorkingDays;
+int maxWorkingHours;
+int companyMonthlyWage;
+int companyDailyWage;
+public CompanyEmpWage(String companyCompanyName,int companyWagePerHour,int companyMaxWorkingDays,int companyMaxWorkingHours){
+	companyName = companyCompanyName;
+	wagePerHour = companyWagePerHour;
+	maxWorkingDays = companyMaxWorkingDays;
+	maxWorkingHours = companyMaxWorkingHours;
+	EmpWageBuilder emp = new EmpWageBuilder(companyWagePerHour, companyMaxWorkingDays, companyMaxWorkingHours);
+	companyMonthlyWage = emp.computeWagesForMonth();
+	companyDailyWage = emp.computeDailyEmployeeWage(companyWagePerHour);
+   }
+}
 
 public class EmpWageBuilder implements EmpWageBuilderInterface{
 	   int wagePerHour;
@@ -24,7 +41,7 @@ public class EmpWageBuilder implements EmpWageBuilderInterface{
 	{
 		
 	}
-	private int computeDailyEmployeeWage(int wagePerHour)
+	public int computeDailyEmployeeWage(int wagePerHour)
 	   {
 	      return wagePerHour*fullDayHour;
 	   }
@@ -73,6 +90,7 @@ public class EmpWageBuilder implements EmpWageBuilderInterface{
 		for (Iterator iterator = cmpArr.iterator(); iterator.hasNext();) {
 			CompanyEmpWage companyEmpWage = (CompanyEmpWage) iterator.next();
 			System.out.println("Monthly Wage for "+companyEmpWage.companyName+" is "+companyEmpWage.companyMonthlyWage);
+			System.out.println("Daily Wage for "+companyEmpWage.companyName+" is "+companyEmpWage.companyDailyWage);
 		}
 	   }
 	public static void main(String[] args)
