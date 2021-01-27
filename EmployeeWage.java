@@ -1,12 +1,13 @@
 public class EmployeeWage{
+	static final int wagePerHour = 20;
+	static final int fullDayHour = 8;
+	static final int partTimeHour = 8;
+	static final int wagesForMonth = 0;
+	static final int workingDaysPerMonth = 20;
 	public static void main(String[] args)
 	{
 	System.out.println("Welcome to employee wage computation!");
-	int wagePerHour = 20;
-	int fullDayHour = 8;
-	int partTimeHour = 8;
-	int wagesForMonth = 0;
-	int workingDaysPerMonth = 20;
+	
 	for(int i=0;i<20;i++)
 		{
 		int dailyWage = 0;
