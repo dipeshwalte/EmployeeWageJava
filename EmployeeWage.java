@@ -1,52 +1,39 @@
 public class EmployeeWage{
+	static final int WAGE_PER_HOUR = 20;
+	static final int FULL_DAY_HOUR = 8;
+	static final int PART_TIME_HOUR = 4;
+	static final int EMP_FULL_TIME = 1;
+	static final int EMP_PART_TIME = 2;
+	static final int MAX_WORKING_DAYS=20;
+	static final int MAX_WORKING_HOURS=100;
 	public static void main(String[] args)
 	{
 	System.out.println("Welcome to employee wage computation!");
-	int wagePerHour = 20;
-	int fullDayHour = 8;
-	int partTimeHour = 8;
-	int wagesForMonth = 0;
-	int workingDaysPerMonth = 20;
 	int workingHours = 0;
 	int workingDays = 0;
-	while(workingDays<20 && workingHours<100)
+	int wagesPerMonth=0;
+	while(MAX_WORKING_DAYS<20 && MAX_WORKING_HOURS<100)
 		{
-		int attendance = (int)Math.floor((Math.random()*10)%2);
-		int dailyWage = 0;
+		int attendance = (int)Math.floor((Math.random()*10)%3);
 		switch(attendance){
-			case 1:
+			case EMP_FULL_TIME:
 					System.out.println("Employee Present");
-					dailyWage=(wagePerHour*fullDayHour);
-					wagesForMonth=wagesForMonth + dailyWage;
-					workingHours+=fullDayHour;
-					if(workingHours>100)
-						{
-						continue;
-						}
-					System.out.println("Daily Wage: "+dailyWage);
-					int partTime = (int)Math.floor((Math.random()*10)%2);
-					if(partTime==1)
-						{
-						System.out.println("Employee Performed Parttime");
-						int partTimeWage = (partTimeHour*wagePerHour);
-						workingHours+=fullDayHour;
-						dailyWage=dailyWage+partTimeWage;
-						wagesForMonth= wagesForMonth + partTimeWage;
-						System.out.println("New Daily Wage: "+dailyWage);
-						}
+					wagesPerMonth=wagesPerMonth + (WAGE_PER_HOUR*FULL_DAY_HOUR);
 					workingDays+=1;
+					workingHours+=FULL_DAY_HOUR;
 			break;
-			case 0:
-					System.out.println("Employee Absent");
-					System.out.println("Daily Wage: "+dailyWage);
+			case EMP_PART_TIME:
+					System.out.println("Employee Performed Parttime");
+					dailyWage=dailyWage+partTimeWage;
+					wagesPerMonth= wagesPerMonth + (PART_TIME_HOUR*WAGE_PER_HOUR);
+					workingDays+=1;
+					workingHours+=PART_TIME_HOUR;
 			break;
 			default:
-					System.out.println("Something Went Wrong");
+					System.out.println("Employee Absent");
 			break;
 			}//end Switch
 		}//end For
-	System.out.println("Working Hours: "+workingHours);
-	System.out.println("Wordingdays: "+workingDays);
-	System.out.println("Wages for the Month: "+wagesForMonth);
+	System.out.println("Wages for the Month: "+WAGES_FOR_MONTH);
 	}
 }
