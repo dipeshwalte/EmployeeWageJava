@@ -8,25 +8,23 @@ public class EmployeeWage{
 	int partTimeHour = 8;
 	int dailyWage = 0;
 	switch(attendance){
-		case 1:
+		case EMP_FULL_TIME:
 				System.out.println("Employee Present");
-				dailyWage=(wagePerHour*fullDayHour);
+				dailyWage=(WAGE_PER_HOUR*FULL_DAY_HOUR);
+				WAGES_FOR_MONTH=WAGES_FOR_MONTH + dailyWage;
 				System.out.println("Daily Wage: "+dailyWage);
-				int partTime = (int)Math.floor((Math.random()*10)%2);
-				if(partTime==1)
-					{
-					System.out.println("Employee Performed Parttime");
-					dailyWage=dailyWage+(partTimeHour*wagePerHour);
-					System.out.println("New Wage: "+dailyWage);
-					}
-		break;
-		case 0:
+		        break;
+		case EMP_PART_TIME:
+				System.out.println("Employee Performed Parttime");
+				int partTimeWage = (PART_TIME_HOUR*WAGE_PER_HOUR);
+				dailyWage=dailyWage+partTimeWage;
+				WAGES_FOR_MONTH= WAGES_FOR_MONTH + partTimeWage;
+				System.out.println("New Daily Wage: "+dailyWage);
+			break;
+		default:
 				System.out.println("Employee Absent");
 				System.out.println("Daily Wage: "+dailyWage);
-		break;
-		default:
-				System.out.println("Something Went Wrong");
-		break;
-		}
+			break;
+		}//end Switch
 	}
 }
