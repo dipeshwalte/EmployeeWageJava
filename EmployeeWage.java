@@ -16,7 +16,7 @@ public class EmployeeWage{
 		}
 	else if(attendance==EMP_PART_TIME){
 		System.out.println("Employee Performed Parttime");
-		dailyWage=dailyWage+(PART_TIME_HOUR*WAGE_PER_HOUR);
+		dailyWage=(PART_TIME_HOUR*WAGE_PER_HOUR);
 		System.out.println("New Wage: "+dailyWage);
 		}
 	else{
