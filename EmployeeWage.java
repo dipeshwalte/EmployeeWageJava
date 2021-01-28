@@ -1,30 +1,30 @@
 public class EmployeeWage{
-	static final int wagePerHour = 20;
-	static final int fullDayHour = 8;
-	static final int partTimeHour = 8;
-	static final int wagesForMonth = 0;
-	static final int workingDaysPerMonth = 20;
+	static final int WAGE_PER_HOUR = 20;
+	static final int FULL_DAY_HOUR = 8;
+	static final int PART_TIME_HOUR = 8;
+	static final int WAGES_FOR_MONTH = 0;
+	static final int WORKING_DAYS_PER_MONTH = 20;
 	public static void main(String[] args)
 	{
 	System.out.println("Welcome to employee wage computation!");
 	
-	for(int i=0;i<20;i++)
+	for(int i=0;i<WORKING_DAYS_PER_MONTH;i++)
 		{
 		int dailyWage = 0;
 		int attendance = (int)Math.floor((Math.random()*10)%2);
 		switch(attendance){
 			case 1:
 					System.out.println("Employee Present");
-					dailyWage=(wagePerHour*fullDayHour);
-					wagesForMonth=wagesForMonth + dailyWage;
+					dailyWage=(WAGE_PER_HOUR*FULL_DAY_HOUR);
+					WAGES_FOR_MONTH=WAGES_FOR_MONTH + dailyWage;
 					System.out.println("Daily Wage: "+dailyWage);
 					int partTime = (int)Math.floor((Math.random()*10)%2);
 					if(partTime==1)
 						{
 						System.out.println("Employee Performed Parttime");
-						int partTimeWage = (partTimeHour*wagePerHour);
+						int partTimeWage = (PART_TIME_HOUR*WAGE_PER_HOUR);
 						dailyWage=dailyWage+partTimeWage;
-						wagesForMonth= wagesForMonth + partTimeWage;
+						WAGES_FOR_MONTH= WAGES_FOR_MONTH + partTimeWage;
 						System.out.println("New Daily Wage: "+dailyWage);
 						}
 			break;
@@ -37,6 +37,6 @@ public class EmployeeWage{
 			break;
 			}//end Switch
 		}//end For
-	System.out.println("Wages for the Month: "+wagesForMonth);
+	System.out.println("Wages for the Month: "+WAGES_FOR_MONTH);
 	}
 }
